@@ -4,8 +4,8 @@
 
 MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp -b twrp-11"
 
-DT_PATH=device/xiaomi/alioth
-DT_LINK="https://github.com/willzyx-hub/twrp_device_xiaomi_alioth -b android-11"
+DT_PATH=device/xiaomi/spes
+DT_LINK="https://github.com/willzyx-hub/device_xiaomi_spes-twrp -b android-11"
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -23,7 +23,7 @@ echo " ===+++ Building Recovery +++==="
 
 . build/envsetup.sh
 export ALLOW_MISSING_DEPENDENCIES=true
-lunch twrp_${DEVICE}-eng && mka bootimage
+lunch omni_${DEVICE}-eng && mka bootimage
 
 cd $OUT/recovery/root
 ./ldcheck -p system/lib64:vendor/lib64 -d system/bin/qseecomd
